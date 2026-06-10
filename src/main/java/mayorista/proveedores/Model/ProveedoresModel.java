@@ -4,8 +4,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
-@Entity // le dice a Spring que esta clase representa una tabla en la base de datos
-@Table(name = "proveedores") // el nombre que tendrá la tabla en MySQL
+@Entity 
+@Table(name = "proveedores") 
 @Data // Lombok genera automáticamente getters, setters, toString, equals y hashCode
 @NoArgsConstructor // Lombok genera un constructor vacío (requerido por JPA)
 @AllArgsConstructor // Lombok genera un constructor con todos los campos
