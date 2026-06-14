@@ -1,4 +1,4 @@
-package mayorista.proveedores.Security;
+package mayorista.proveedores.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
