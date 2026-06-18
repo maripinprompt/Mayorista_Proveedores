@@ -3,7 +3,7 @@ package mayorista.proveedores.Model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name = "proveedores")
@@ -14,21 +14,22 @@ public class ProveedoresModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonIgnore // el id lo genera MySQL automaticamente, no se acepta ni se muestra en el JSON
+    // permite que el id se muestre en las respuestas GET, pero bloquea que se envie manualmente en POST/PUT
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Long id;
 
-    @NotBlank // valida que el nombre no venga vacio
+    @NotBlank
     private String nombre;
 
-    @Email // valida que tenga formato de correo
-    @NotBlank // valida que no venga vacio
-    @Column(unique = true) // no pueden existir dos proveedores con el mismo correo
+    @Email
+    @NotBlank
+    @Column(unique = true)
     private String correo;
 
     private String telefono;
     private String direccion;
 
-    @Column(unique = true) // no pueden existir dos proveedores con el mismo RUT/RUC
+    @Column(unique = true)
     private String rutRuc;
 
     private String productosQueProvee;
